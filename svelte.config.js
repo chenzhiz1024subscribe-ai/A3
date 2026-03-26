@@ -5,7 +5,10 @@ const repo = 'A3';
 
 const config = {
 	kit: {
-		adapter: adapter(),
+		adapter: adapter({
+			pages: 'build',
+			assets: 'build'
+		}),
 		paths: {
 			base: dev ? '' : `/${repo}`
 		}

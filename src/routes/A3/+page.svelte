@@ -9,6 +9,7 @@
     import { addGround, onWindowResize, loadModels } from "$lib/Helper-3D";
 
     import * as d3 from "d3";
+    import { base } from '$app/paths';
 
     let movies: TMovie[] = $state([]);
 
@@ -36,7 +37,7 @@
     //   - Count how many movies belong to each genre (Comedy, Romance, Drama)
     //   - Build a TStackRow[] array sorted by year
 async function loadCsv() {
-    const rawData = await d3.csv("/summer_movies.csv");
+    const rawData = await d3.csv(`${base}/summer_movies.csv`);
 
     const movies: TMovie[] = rawData.map((d: any) => ({
         year: String(
@@ -220,7 +221,7 @@ async function loadCsv() {
 // Load bird models (linear motion)
 const birdModels = [
     {
-        path: "3d/Flamingo.glb",
+        path: `${base}/3d/Flamingo.glb`,
         speed: 35,
         duration: 1,
         x: -650,
@@ -229,7 +230,7 @@ const birdModels = [
         scale: 0.75,
     },
     {
-        path: "3d/Flamingo.glb",
+        path: `${base}/3d/Flamingo.glb`,
         speed: 30,
         duration: 1,
         x: -350,
@@ -238,7 +239,7 @@ const birdModels = [
         scale: 0.75,
     },
     {
-        path: "3d/Parrot.glb",
+        path: `${base}/3d/Parrot.glb`,
         speed: 40,
         duration: 0.5,
         x: -500,
@@ -257,7 +258,7 @@ const horseConfigs = [
     { startAngle: Math.PI, orbitSpeed: 0.4 },
 ];
 horseConfigs.forEach((config) => {
-    gltfLoader.load("3d/Horse.glb", (gltf) => {
+    gltfLoader.load(`${base}/3d/Horse.glb`, (gltf) => {
         const mesh = gltf.scene.children[0].clone() as THREE.Mesh;
         (mesh as any).material = (mesh as any).material.clone();
         mesh.scale.set(0.5, 0.5, 0.5);

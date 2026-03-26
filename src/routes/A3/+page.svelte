@@ -11,7 +11,7 @@
     import * as d3 from "d3";
 
     let movies: TMovie[] = $state([]);
-export const prerender = true;
+
     // Stacked data: each year has counts per genre
     type TStackRow = {
         year: string;
